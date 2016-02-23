@@ -1,5 +1,16 @@
 package test.web.mvc.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * @author	Jimmy
+ * 
+ * Employee object is a model object of MVC pattern
+ * 
+ * */
+
+@XmlRootElement(name = "employee")
 public class Employee {
 
 	private int id;
@@ -13,6 +24,7 @@ public class Employee {
 		return id;
 	}
 
+	@XmlElement
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -21,6 +33,7 @@ public class Employee {
 		return firstname;
 	}
 
+	@XmlElement
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
@@ -29,6 +42,7 @@ public class Employee {
 		return lastname;
 	}
 
+	@XmlElement
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}

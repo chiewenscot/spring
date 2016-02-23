@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>Jimmy Demo Portal</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <h1>Jimmy Demo Portal</h1>
+    <h2>1. Spring Framework Examples</h2>
+    <a target="_blank" href="/SpringWeb/restWSDemo"><h2>2. Spring Restful WebServices Examples</h2></a>    
+    <h2>3. AngularJS Examples</h2>
   </body>
 </html>
