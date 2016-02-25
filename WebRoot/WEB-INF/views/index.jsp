@@ -23,7 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <h1>Jimmy Demo Portal</h1>
     <h2>1. Spring Framework Examples</h2>
-    <a target="_blank" href="/SpringWeb/restWSDemo"><h2>2. Spring Restful WebServices Examples</h2></a>    
+    <a target="_blank" href="/SpringWeb/restWSDemo"><h2>2. Spring Restful WebServices Examples</h2></a>
+    <h2>Kafka Integration Examples</h2>    
     <h2>3. AngularJS Examples</h2>
   </body>
 </html>
