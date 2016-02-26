@@ -9,6 +9,15 @@ import test.web.mvc.model.Employee;
 public class NoblockingRestResult {
 
 	@XmlElement
+	private long startTS;
+
+	@XmlElement
+	private long endTS;
+	
+	@XmlElement
+	private long timeElapsed;
+	
+	@XmlElement
 	private HTTPCallStatus status;
 
 	@XmlElement
@@ -32,5 +41,34 @@ public class NoblockingRestResult {
 
 	public void setRs(List<Employee> rs) {
 		this.rs = rs;
+	}
+	
+	public long getStartTS() {
+		return startTS;
+	}
+
+
+	public void setStartTS(long startTS) {
+		this.startTS = startTS;
+	}
+
+
+	public long getEndTS() {
+		return endTS;
+	}
+
+
+	public void setEndTS(long endTS) {
+		this.endTS = endTS;
+	}
+
+
+	public long getTimeElapsed() {
+		return timeElapsed;
+	}
+
+
+	public void setTimeElapsed(long timeElapsed) {
+		this.timeElapsed = timeElapsed;
 	}
 }

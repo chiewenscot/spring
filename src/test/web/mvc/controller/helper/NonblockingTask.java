@@ -12,7 +12,7 @@ public class NonblockingTask extends TimerTask {
 	private DeferredResult<NoblockingRestResult> result;
 	
 	public NonblockingTask(DeferredResult<NoblockingRestResult> deferredResult) {
-		// TODO Auto-generated constructor stub
+		result = deferredResult;
 	}
 
 	@Override
