@@ -19,11 +19,15 @@
       <param-value>/WEB-INF/cwt-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
+	<async-supported>true</async-supported>
   </servlet>
   <servlet-mapping>
     <servlet-name>cwt</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <session-config>
+    <session-timeout>5000</session-timeout>
+</session-config>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

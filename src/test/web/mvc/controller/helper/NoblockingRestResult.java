@@ -8,20 +8,23 @@ import test.web.mvc.model.Employee;
 @XmlRootElement
 public class NoblockingRestResult {
 
-	@XmlElement
+//	@XmlElement
 	private long startTS;
 
-	@XmlElement
+//	@XmlElement
 	private long endTS;
 	
-	@XmlElement
+//	@XmlElement
 	private long timeElapsed;
 	
-	@XmlElement
+//	@XmlElement
 	private HTTPCallStatus status;
 
-	@XmlElement
+//	@XmlElement
 	private List<Employee> rs;
+	
+//	@XmlElement
+	private long configProcessTime;
 	
 	public NoblockingRestResult() {
 	}
@@ -31,6 +34,7 @@ public class NoblockingRestResult {
 		return status;
 	}
 
+	@XmlElement
 	public void setStatus(HTTPCallStatus status) {
 		this.status = status;
 	}
@@ -39,6 +43,7 @@ public class NoblockingRestResult {
 		return rs;
 	}
 
+	@XmlElement
 	public void setRs(List<Employee> rs) {
 		this.rs = rs;
 	}
@@ -48,6 +53,7 @@ public class NoblockingRestResult {
 	}
 
 
+	@XmlElement
 	public void setStartTS(long startTS) {
 		this.startTS = startTS;
 	}
@@ -58,6 +64,7 @@ public class NoblockingRestResult {
 	}
 
 
+	@XmlElement
 	public void setEndTS(long endTS) {
 		this.endTS = endTS;
 	}
@@ -68,7 +75,19 @@ public class NoblockingRestResult {
 	}
 
 
+	@XmlElement
 	public void setTimeElapsed(long timeElapsed) {
 		this.timeElapsed = timeElapsed;
+	}
+
+
+	public long getConfigProcessTime() {
+		return configProcessTime;
+	}
+
+
+	@XmlElement
+	public void setConfigProcessTime(long configProcessTime) {
+		this.configProcessTime = configProcessTime;
 	}
 }

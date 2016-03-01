@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Timer;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.async.DeferredResult;
 
+import test.web.mvc.controller.helper.CompletionProcessor;
+import test.web.mvc.controller.helper.NoblockingRestResult;
+import test.web.mvc.controller.helper.NonblockingTask;
+import test.web.mvc.controller.helper.TimeOutProcessor;
 import test.web.mvc.model.Employee;
 
 /**
@@ -32,6 +39,8 @@ public class NonBlockingEmployeeController {
 
 	@Autowired
 	ServletContext context;
+	
+	private Timer timer = new Timer();
 
 	public NonBlockingEmployeeController() {
 	}
@@ -47,9 +56,29 @@ public class NonBlockingEmployeeController {
 	 */
 	@RequestMapping(value = "/Employee/findByPK/nonblocking/{id}", method = RequestMethod.GET, produces = {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public Employee findByPKNoblocking(@PathVariable("id") int id) {
+	public DeferredResult<NoblockingRestResult> findByPKNoblocking(@PathVariable("id") int id) {
 		
-		return employee;
+		DeferredResult<NoblockingRestResult> deferredResult = new DeferredResult<>();
+//		deferredResult.setResult(r);
+	    
+		deferredResult.onTimeout(new TimeOutProcessor());//public void onTimeout(Runnable callback)
+		deferredResult.onCompletion(new CompletionProcessor());
+
+//		NoblockingRestResult r = new NoblockingRestResult();
+//		r.setStartTS(System.currentTimeMillis());
+//		r.setConfigProcessTime(2000);
+//		deferredResult.setResult(r);
+
+		
+		NonblockingTask task = new NonblockingTask(id, deferredResult);
+		
+		System.out.println("Scheduled for 3000 msecs");
+	    // Schedule the task for asynch completion in the future
+	    timer.schedule(task, 3000);
+	    System.out.println("Task scheduled");
+	    
+	    // Return to let go of the precious thread we are holding on to...
+	    return deferredResult;
 	}
 
 	/**
